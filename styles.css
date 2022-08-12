@@ -36,7 +36,8 @@ body{
     background-color: aliceblue;
 }
 .pixel{
-    padding: 12px;
+    border: none;
+    margin: 0;
 }
 .pixel:hover {
     background-color: black;
