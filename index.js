@@ -9,7 +9,17 @@ const eraser = document.getElementById('eraser')
 const pen = document.getElementById('pen')
 
 
+eraser.onclick = e => {
+    e.target.classList.add('selected');
+    pen.classList.remove('selected');
+    erase();
+}
 
+pen.onclick = event => {
+    event.target.classList.add('selected');
+    eraser.classList.remove('selected');
+    draw();
+}
 
 let counter = 0;
 
@@ -52,7 +62,27 @@ function changeColor(element){
     }
 }
 
+// draws onto the screen, similar to changeColor()
+function draw(){
+    let bgColor = colorWheel.value
+    colorWheel.addEventListener('input', (event) => {
+        bgColor = event.target.value
+    })
+    const rows = container.querySelectorAll('.row')
+    rows.forEach(row => {
+        const pixels = row.querySelectorAll('.pixel')
+        pixels.forEach(pixel => {
+            pixel.onmouseover = (e) => {
+                e.target.style.background = `${bgColor}`
+            }
+            pixel.onmouseout = (e) => {
+                e.target.style.background = `${bgColor}`
+            }
+        })
+    })
+}
 
+// Erases/changes pixel colors to white
 function erase(){
     const rows = container.querySelectorAll('.row')
     rows.forEach(row => {

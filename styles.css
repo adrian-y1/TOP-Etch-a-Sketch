@@ -48,3 +48,7 @@ body{
 .pixel:hover {
     background-color: black;
 }
+.selected {
+    background-color: black;
+    color: white;
+}
