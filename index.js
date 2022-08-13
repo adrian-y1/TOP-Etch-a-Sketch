@@ -4,6 +4,12 @@
 const container = document.querySelector('.container')
 const range = document.querySelector('.slider')
 const rangeLabel = document.querySelector('#slider-label')
+const colorWheel = document.getElementById('color-wheel')
+const eraser = document.getElementById('eraser')
+const pen = document.getElementById('pen')
+
+
+
 
 let counter = 0;
 
@@ -19,21 +25,47 @@ function createGrid(size){
     }
 }
 
+// Creates the row and every div inside that row
 function createPixel(size){
     const row = document.createElement('div')
     row.className = 'row'
     for(let j=0; j < size; j++){
         const el = document.createElement('div')
         el.className = 'pixel'
-        el.onmouseover = (e) => {
-            e.target.style.background = 'black'
-        }
-        el.onmouseout = (e) => {
-            e.target.style.background = 'black'
-        }
+        changeColor(el);
         row.appendChild(el)
     }
     container.appendChild(row)
+}
+
+// Changes the color of the divs based on user's input, black is default
+function changeColor(element){
+    let bgColor = colorWheel.value
+    colorWheel.addEventListener('input', (event) => {
+        bgColor = event.target.value
+    })
+    element.onmouseover = (e) => {
+        e.target.style.background = `${bgColor}`
+    }
+    element.onmouseout = (e) => {
+        e.target.style.background = `${bgColor}`
+    }
+}
+
+
+function erase(){
+    const rows = container.querySelectorAll('.row')
+    rows.forEach(row => {
+        const pixels = row.querySelectorAll('.pixel')
+        pixels.forEach(pixel => {
+            pixel.onmouseover = (e) => {
+                e.target.style.background = `white`
+            }
+            pixel.onmouseout = (e) => {
+                e.target.style.background = `white`
+            }
+        })
+    })
 }
 
 
@@ -51,7 +83,7 @@ function resetPad(){
     rows.forEach(row => {
         const pixels = row.querySelectorAll('.pixel')
         pixels.forEach(pixel => {
-            pixel.style.background = 'aliceblue'
+            pixel.style.background = 'white'
         })
     })
 }
