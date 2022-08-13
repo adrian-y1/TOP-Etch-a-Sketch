@@ -13,16 +13,20 @@
         <div class="header">
             <h1>Etch-a-Sketch</h1>
         </div>
-        <div class="container">
+        <div class="inner-wrapper">
+            <div class="menu-items">
+                <input type="color" class="color-wheel" id="color-wheel" value="#000000">
+                <button type="button" onclick="resetPad();" class="reset-pad">Reset Pad</button>
+                <button type="button" id="eraser">Eraser</button>
+                <button type="button" id="pen" class="selected">Pen</button>
+            </div>
+            <div class="container">
+            </div>
         </div>
         <div class="slidecontainer">
             <label id="slider-label" for="slider">30x30</label>
             <input id="slider" type="range" min="1" max="100" class="slider" value="30">
         </div>
-        <button type="button" onclick="resetPad();">Reset Pad</button>
-        <button type="button" id="eraser">Eraser</button>
-        <button type="button" id="pen" class="selected">Pen</button>
-        <input type="color" class="color-wheel" id="color-wheel" value="#000000">
    </div>
 </body>
 </html>

@@ -7,17 +7,29 @@ const rangeLabel = document.querySelector('#slider-label')
 const colorWheel = document.getElementById('color-wheel')
 const eraser = document.getElementById('eraser')
 const pen = document.getElementById('pen')
+const resetPadEl = document.querySelector('.reset-pad')
 
+
+colorWheel.onclick = e => {
+    colorWheel.classList.add('selected')
+    pen.classList.remove('selected');
+    resetPadEl.classList.remove('selected')
+    eraser.classList.remove('selected')
+}
 
 eraser.onclick = e => {
     e.target.classList.add('selected');
     pen.classList.remove('selected');
+    resetPadEl.classList.remove('selected')
+    colorWheel.classList.remove('selected')
     erase();
 }
 
 pen.onclick = event => {
     event.target.classList.add('selected');
     eraser.classList.remove('selected');
+    resetPadEl.classList.remove('selected')
+    colorWheel.classList.remove('selected')
     draw();
 }
 
@@ -109,6 +121,10 @@ function removeRow(size){
 
 // Function that resets the sketch pad on click
 function resetPad(){
+    resetPadEl.classList.toggle('selected');
+    eraser.classList.remove('selected');
+    pen.classList.remove('selected');
+    colorWheel.classList.remove('selected')
     const rows = container.querySelectorAll('.row')
     rows.forEach(row => {
         const pixels = row.querySelectorAll('.pixel')
