@@ -9,6 +9,10 @@ const eraser = document.getElementById('eraser')
 const pen = document.getElementById('pen')
 const resetPadEl = document.querySelector('.reset-pad')
 
+let mouse = false;
+
+
+
 
 colorWheel.onclick = e => {
     colorWheel.classList.add('selected')
@@ -66,11 +70,18 @@ function changeColor(element){
     colorWheel.addEventListener('input', (event) => {
         bgColor = event.target.value
     })
-    element.onmouseover = (e) => {
-        e.target.style.background = `${bgColor}`
+    element.onmousedown = (e) => {
+        e.preventDefault();
+        mouse = true;
     }
-    element.onmouseout = (e) => {
-        e.target.style.background = `${bgColor}`
+    element.onmouseup = (e) => {
+        e.preventDefault();
+        mouse = false;
+    }
+    element.onmousemove = (e) => {
+        if(mouse){
+            e.target.style.background = `${bgColor}`
+        }
     }
 }
 
@@ -84,11 +95,18 @@ function draw(){
     rows.forEach(row => {
         const pixels = row.querySelectorAll('.pixel')
         pixels.forEach(pixel => {
-            pixel.onmouseover = (e) => {
-                e.target.style.background = `${bgColor}`
+            pixel.onmousedown = (e) => {
+                e.preventDefault();
+                mouse = true;
             }
-            pixel.onmouseout = (e) => {
-                e.target.style.background = `${bgColor}`
+            pixel.onmouseup = (e) => {
+                e.preventDefault();
+                mouse = false;
+            }
+            pixel.onmousemove = (e) => {
+                if(mouse){
+                    e.target.style.background = `${bgColor}`
+                }
             }
         })
     })
@@ -100,11 +118,18 @@ function erase(){
     rows.forEach(row => {
         const pixels = row.querySelectorAll('.pixel')
         pixels.forEach(pixel => {
-            pixel.onmouseover = (e) => {
-                e.target.style.background = `white`
+            pixel.onmousedown = (e) => {
+                e.preventDefault();
+                mouse = true;
             }
-            pixel.onmouseout = (e) => {
-                e.target.style.background = `white`
+            pixel.onmouseup = (e) => {
+                e.preventDefault();
+                mouse = false;
+            }
+            pixel.onmousemove = (e) => {
+                if(mouse){
+                    e.target.style.background = `white`
+                }
             }
         })
     })
