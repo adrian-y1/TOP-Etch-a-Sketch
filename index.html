@@ -6,26 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-a-Sketch</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="icon" href="palette-fill.svg">
     <script src="index.js" defer></script>
 </head>
 <body>
    <div class="wrapper">
         <div class="header">
-            <h1>Etch-a-Sketch</h1>
+            <h1><i class="bi bi-palette-fill"></i> Etch-a-Sketch</h1>
         </div>
         <div class="inner-wrapper">
-            <div class="menu-items">
-                <input type="color" class="color-wheel" id="color-wheel" value="#000000">
-                <button type="button" onclick="resetPad();" class="reset-pad">Reset Pad</button>
-                <button type="button" id="eraser">Eraser</button>
-                <button type="button" id="pen" class="selected">Pen</button>
-            </div>
             <div class="container">
             </div>
         </div>
         <div class="slidecontainer">
             <label id="slider-label" for="slider">16x16</label>
             <input id="slider" type="range" min="1" max="40" class="slider" value="16">
+            <div class="menu-items">
+                <input type="color" class="color-wheel" id="color-wheel" value="#000000">
+                <button type="button" onclick="resetPad();" class="reset-pad"><i class="bi bi-x-circle-fill"></i>Clear</button>
+                <button type="button" id="eraser"><i class="bi bi-eraser-fill"></i> Eraser</button>
+                <button type="button" id="pen" class="selected"><i class="bi bi-pencil-fill"></i> Pen</button>
+            </div>
         </div>
    </div>
 </body>
