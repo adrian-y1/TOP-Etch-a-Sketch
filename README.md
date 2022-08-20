@@ -1,2 +1,2 @@
 # TOP-Etch-a-Sketch
-The Odin Project sketching project
+Visit Website: [Etch-a-Sketch](https://adrian-y1.github.io/TOP-Etch-a-Sketch/)
